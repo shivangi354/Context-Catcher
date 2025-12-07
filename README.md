@@ -1,7 +1,8 @@
 # ContextCatcher MVP
 
-A minimal, secure email ingestion and analysis platform that fetches emails via IMAP, normalizes messages, and provides AI-powered summaries with action items.
-
+ContextCatcher is a lightweight AI-powered context-summarization tool that automatically fetches your messages from different communication channels and converts them into clear, actionable daily digests. The goal is to unify email, WhatsApp, Slack, and other chat platforms into one intelligent “catch-up” dashboard powered by generative AI.
+At the moment, the MVP includes email ingestion via IMAP with summarization and action extraction.
+WhatsApp and Slack integrations are coming soon.
 ## Features
 
 - 📧 **IMAP Email Ingestion** - Fetch emails from Gmail and other IMAP servers
