@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  contextcatcher:
+    build: .
+    container_name: contextcatcher-mvp
+    ports:
+      - "8000:8000"  # FastAPI backend
+      - "8501:8501"  # Streamlit UI
+    environment:
+      # Email configuration
+      - EMAIL_HOST=${EMAIL_HOST:-imap.gmail.com}
+      - EMAIL_PORT=${EMAIL_PORT:-993}
+      - EMAIL_USERNAME=${EMAIL_USERNAME}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      
+      # Fetch configuration
+      - LOOKBACK_HOURS=${LOOKBACK_HOURS:-24}
+      
+      # LLM configuration
+      - LLM_ENABLED=${LLM_ENABLED:-false}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      
+      # Storage configuration
+      - STORAGE_DIR=${STORAGE_DIR:-/app/storage}
+    volumes:
+      # Persist storage
+      - ./storage:/app/storage
+      # Optional: mount custom config
+      - ./config.json:/app/config.json:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

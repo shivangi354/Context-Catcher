@@ -1,0 +1,28 @@
+{
+  "email": {
+    "host": "imap.gmail.com",
+    "port": 993,
+    "username": "your-email@gmail.com",
+    "password": "your-app-specific-password",
+    "use_ssl": true
+  },
+  "fetch": {
+    "lookback_hours": 24,
+    "lookback_minutes": 2,
+    "strip_quotes": true,
+    "max_retries": 3,
+    "retry_backoff_base": 2.0,
+    "primary_only": false,
+    "use_arrival_date": true
+  },
+  "llm": {
+    "enabled": false,
+    "provider": "openai",
+    "api_key": "",
+    "model": "gpt-3.5-turbo"
+  },
+  "storage": {
+    "dir": "./storage",
+    "index_file": "index.json"
+  }
+}
